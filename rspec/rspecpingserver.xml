@@ -1,0 +1,63 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node client_id="server" component_id="urn:publicid:IDN+exogeni.net:tamuvmsite+node+orca-vm-cloud" component_manager_id="urn:publicid:IDN+exogeni.net:tamuvmsite+authority+am" component_name="orca-vm-cloud" exclusive="false" sliver_id="urn:publicid:IDN+exogeni.net:tamuvmsite+sliver+2272b247-89fd-414d-8a7e-1623912eaecf:server">
+    <location country="unknown" latitude="30.619232" longitude="-96.33883"/>
+    <sliver_type name="xo.small">
+      <disk_image name="http://geni-images.renci.org/images/standard/ubuntu/ub1404-v1.0.3.xml" version="2d553fdbca830020d7cf13011399d7210dcefe96"/>
+    </sliver_type>
+    <services>
+      <ns5:services_post_boot_script xmlns:ns5="http://www.geni.net/resources/rspec/ext/postBootScript/1" type="velocity">        #!/bin/bash
+# Automatically generated boot script
+
+# wget or curl must be installed on the image
+mkdir -p /
+cd /
+if [ -x `which wget 2&amp;gt;/dev/null` ]; then
+  wget -q -O `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz` http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz
+else if [ -x `which curl 2&amp;gt;/dev/null` ]; then
+  curl http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz &amp;gt; `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz`
+fi
+fi
+# untar
+tar -zxf `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz`
+eval &amp;quot;/bin/sh -c \&amp;quot;sudo sh /gimidev/gimibot.sh\&amp;quot;&amp;quot;
+      </ns5:services_post_boot_script>
+    </services>
+    <interface client_id="interface-1"/>
+    <ns4:geni_sliver_info xmlns:ns4="http://groups.geni.net/exogeni/attachment/wiki/RspecExtensions/sliver-info/1" creation_time="2015-02-20T18:41:36.000Z" creator_urn="thearn@semandex.net, urn:publicid:IDN+ch.geni.net+user+thearn" expiration_time="2015-02-25T21:22:29.000Z" start_time="2015-02-20T18:41:36.000Z" state="configuring"/>
+  </node>
+  <node client_id="client" component_id="urn:publicid:IDN+exogeni.net:tamuvmsite+node+orca-vm-cloud" component_manager_id="urn:publicid:IDN+exogeni.net:tamuvmsite+authority+am" component_name="orca-vm-cloud" exclusive="false" sliver_id="urn:publicid:IDN+exogeni.net:tamuvmsite+sliver+2272b247-89fd-414d-8a7e-1623912eaecf:client">
+    <location country="unknown" latitude="30.619232" longitude="-96.33883"/>
+    <sliver_type name="xo.small">
+      <disk_image name="http://geni-images.renci.org/images/standard/ubuntu/ub1404-v1.0.3.xml" version="2d553fdbca830020d7cf13011399d7210dcefe96"/>
+    </sliver_type>
+    <services>
+      <ns5:services_post_boot_script xmlns:ns5="http://www.geni.net/resources/rspec/ext/postBootScript/1" type="velocity">        #!/bin/bash
+# Automatically generated boot script
+
+# wget or curl must be installed on the image
+mkdir -p /
+cd /
+if [ -x `which wget 2&amp;gt;/dev/null` ]; then
+  wget -q -O `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz` http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz
+else if [ -x `which curl 2&amp;gt;/dev/null` ]; then
+  curl http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz &amp;gt; `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz`
+fi
+fi
+# untar
+tar -zxf `basename http://emmy9.casa.umass.edu/GEC-20/gimidev.tar.gz`
+eval &amp;quot;/bin/sh -c \&amp;quot;sudo sh /gimidev/gimibot.sh\&amp;quot;&amp;quot;
+      </ns5:services_post_boot_script>
+    </services>
+    <interface client_id="interface-0"/>
+    <ns4:geni_sliver_info xmlns:ns4="http://groups.geni.net/exogeni/attachment/wiki/RspecExtensions/sliver-info/1" creation_time="2015-02-20T18:41:36.000Z" creator_urn="thearn@semandex.net, urn:publicid:IDN+ch.geni.net+user+thearn" expiration_time="2015-02-25T21:22:29.000Z" start_time="2015-02-20T18:41:36.000Z" state="configuring"/>
+  </node>
+  <link client_id="link-0" sliver_id="urn:publicid:IDN+exogeni.net:tamuvmsite+sliver+2272b247-89fd-414d-8a7e-1623912eaecf:link-0" vlantag="unknown">
+    <component_manager name="urn:publicid:IDN+exogeni.net:tamuvmsite+authority+am"/>
+    <interface_ref client_id="interface-0"/>
+    <property capacity="0" dest_id="interface-1" source_id="interface-0"/>
+    <interface_ref client_id="interface-1"/>
+    <property capacity="0" dest_id="interface-0" source_id="interface-1"/>
+    <ns4:geni_sliver_info xmlns:ns4="http://groups.geni.net/exogeni/attachment/wiki/RspecExtensions/sliver-info/1" creation_time="2015-02-20T18:41:36.000Z" creator_urn="thearn@semandex.net, urn:publicid:IDN+ch.geni.net+user+thearn" expiration_time="2015-02-25T21:22:29.000Z" start_time="2015-02-20T18:41:36.000Z" state="configuring"/>
+  </link>
+  <ns3:geni_slice_info xmlns:ns3="http://groups.geni.net/exogeni/attachment/wiki/RspecExtensions/slice-info/1" state="configuring" urn="urn:publicid:IDN+ch.geni.net:LabWikiDevel+slice+ping-server" uuid="268d9027-2f53-4fb2-bdd9-c76f25235090"/>
+</rspec>
